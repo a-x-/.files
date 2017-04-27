@@ -12,7 +12,7 @@ eval $(thefuck --alias)
 
 export PS1=' ❯ '
 
-
+export PATH=$PATH:~/dotfiles/bin
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
