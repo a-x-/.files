@@ -7,3 +7,11 @@ export LESS="-R"
 
 # recognize comments
 setopt interactivecomments
+
+# directories
+
+## cd - <tab>
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+

@@ -1,6 +1,14 @@
 echo ALIASES
 
+# git
 alias ll='ls -Foal'
 alias gs='git status'
 alias gca='git commit -a --no-ed --amend'
+alias gd='git diff'
 alias gdc='git diff --cached'
+# /git
+
+# misc
+alias /=ag
+alias copy=pbcopy
+# /misc
