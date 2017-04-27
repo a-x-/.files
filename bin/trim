@@ -1,0 +1,5 @@
+#!/bin/sh
+# trim string
+STR="$([ "$1" ] && echo "$1" || cat -)"
+
+echo "$STR" | nodepipe 'stdout = stdin.replace(/^\s+|\s+$/mg, "")'

@@ -1,0 +1,2 @@
+#!/bin/sh
+curl "http://vv.invntrm.ru:3003/$1"

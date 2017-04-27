@@ -1,0 +1,6 @@
+echo ALIASES
+
+alias ll='ls -Foal'
+alias gs='git status'
+alias gca='git commit -a --no-ed --amend'
+alias gdc='git diff --cached'

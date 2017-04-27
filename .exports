@@ -1,0 +1,19 @@
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+export EDITOR=vim
+
+export NODE_PATH="$(npm config get prefix):$(npm config get prefix)/lib/node_modules:./node_modules:$NODE_PATH"
+
+eval $(thefuck --alias)
+
+export PS1=' ❯ '
+
+
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:./node_modules/.bin/:$HOME/.rvm/bin"
