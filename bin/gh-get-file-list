@@ -1,0 +1,6 @@
+#!/bin/sh
+# git get branch by PR number or link
+
+REPO=$1
+GIT_PATH=$2
+http https://github.yandex-team.ru/api/v3/repos/$REPO/git/trees/$GIT_PATH/dev 'Authorization: token 92fab2789aa086a5b484d6682661815cf540427a'

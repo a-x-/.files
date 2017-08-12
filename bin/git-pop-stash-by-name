@@ -1,0 +1,5 @@
+#!/bin/sh
+STASH_MARKER=$1
+STASH_HASH=$(git-get-stash-by-name $STASH_MARKER)
+[ $STASH_HASH ] && git stash pop $STASH_HASH
+

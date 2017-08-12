@@ -1,0 +1,3 @@
+#!/bin/sh
+# Зависит от: gpr (надстройка над hub pull-request)
+cat .git/.gpr

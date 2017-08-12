@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Get common parent commit of two branches
+#
+# @param CURRENT_BRANCH - by default checkouted branch
+# @param OTHER_BRANCH - default git branch (master, dev, trunk)
+#
+# get - maschine readable (scriptable, porcelain)
+#
+
+if [ "$1" ]; then
+    CURRENT_BRANCH=$1
+else
+    CURRENT_BRANCH=$(git-get-br)
+fi
+
+if [ "$2" ]; then
+    OTHER_BRANCH=$2
+else
+    OTHER_BRANCH=origin/$(git-get-default-branch)
+fi
+
+git merge-base $OTHER_BRANCH $CURRENT_BRANCH
+
+

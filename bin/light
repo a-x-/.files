@@ -1,2 +1,2 @@
 #!/bin/sh
-curl "http://vv.invntrm.ru:3003/$1"
+curl "http://light.invntrm.ru/$1" 2>/dev/null

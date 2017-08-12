@@ -1,0 +1,11 @@
+#!/bin/sh
+branch="$1"
+[ ! "$branch" ] && branch="$(git-get-br)"
+# echo $branch
+
+http "https://github.yandex-team.ru/api/v3/repos/mm-interfaces/fiji/pulls" \
+    | jq '.[] | {pr:._links.html.href, branch:.head.ref, descr: .body}
+    | select(.branch == "'"$branch"'")
+    | .descr' \
+        | grep -oE --color=never 'st\.yandex-team\.ru/\w+-\d+' \
+        | grep -oE --color=never '\w+-\d+'

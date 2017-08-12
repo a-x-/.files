@@ -1,0 +1,2 @@
+#!/bin/sh
+read-arg-or-stdin | while read f; do [ -f "$f" ] && echo $f; done

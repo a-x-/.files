@@ -1,0 +1,7 @@
+#!/bin/sh
+# Рекурсивный sed, КАРЛ!!1
+
+PATTERN="$1"
+REPLACE="$2"
+
+ggd "$PATTERN" -n | while read f; do gsed -ri "s/$PATTERN/$REPLACE/" $f; done

@@ -1,14 +1,59 @@
 echo ALIASES
 
+alias ll='ls -Foalh'
+
 # git
-alias ll='ls -Foal'
 alias gs='git status'
 alias gca='git commit -a --no-ed --amend'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gf='git fetch --all --prune' # fetch & clear old branches
+alias grd='gf;git rebase origin/master' # rebase dev
+alias gr='git remote -v' # show remotes
+alias gdd='git diff origin/master' # git diff dev
+alias gpf='git push --force'
+alias gl='git lol'
+alias gla='git lola'
+
+alias ggc=git-get-changed # print list of any changed files in stage/unstage
+alias gse='$EDITOR $(git-get-changed)' # git status: edit all changed files
+
+alias go='git open'
+alias gup=gh-get-url-by-path
+
+function gc__() {
+    msg="$@"; git commit -am "$msg"
+}
+alias gc='noglob gc__'
+function gcn() {
+    msg="$@"; git commit -anm "$msg"
+}
+function gcm() {
+    msg="$@"; git commit -m "$msg"
+}
+function grsc() {
+    git reset @ $*; git checkout $*
+}
 # /git
 
 # misc
 alias /=ag
 alias copy=pbcopy
+alias vim='mvim -v'
+alias svgo='svgo --enable=removeTitle --enable=removeViewBox --enable=removeUselessStrokeAndFill --enable=collapseGroups --enable=removeUselessDefs --enable=cleanupIDs'
+
+alias take-webcam-picture="imagesnap -w 1"
+alias camcap=take-webcam-picture
+function take() {
+  mkdir $1; cd $1
+}
 # /misc
+
+# npm maintenance bash scripts
+alias patch='pre-version && npm version patch && post-version'
+alias minor='pre-version && npm version minor && post-version'
+alias major='pre-version && npm version major && post-version'
+alias pre-version='git diff --exit-code && npm test'
+alias post-version='(git add package-lock.json && git add package-lock.json && git commit --amend --no-ed || :) && npm run --if-present build && git add . && git commit -m build && git diff --exit-code && git push && git push --tags && npm publish'
+# /npm maintenance bash scripts
+

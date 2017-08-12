@@ -1,0 +1,13 @@
+#!/bin/sh
+# see also: https://www.npmjs.com/package/nip
+# usage: echo 1 | nodepipe "stdout = stdin.replace(1, 2)"
+
+[ "$1" ] && fn=$1 || fn='stdout = stdin'
+node -p "var fs=require('fs'),\
+    cl=console.log.bind(console),\
+    read=fs.readFileSync.bind(fs),\
+    write=fs.writeFileSync.bind(fs),\
+    stdin = read('/dev/stdin').toString(),\
+    stdout;\
+    (function(){ $fn }());\
+    ('' + stdout).replace(/\n+$/, '')"

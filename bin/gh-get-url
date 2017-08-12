@@ -1,0 +1,11 @@
+#!/bin/sh
+REMOTE_REPO="$(git remote -v | grep origin | head -n 1 | tr '\t' ' ' |  cut -d ' ' -f 2 | sed -E 's/\.git//')"
+[[ "$(echo "$REMOTE_REPO" | grep -E '^git@')" ]] \
+    && echo $REMOTE_REPO | cut -d @ -f 2 | sed -E 's|(.+):(.+)|https://\1/\2/|' \
+    && exit 0
+
+[[ "$(echo "$REMOTE_REPO" | grep -E '^git:')" ]] \
+    && echo $REMOTE_REPO | cut -d : -f 2 | sed -E 's|(.+)|https:\1/|' \
+    && exit 0
+
+echo $REMOTE_REPO

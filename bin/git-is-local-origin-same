@@ -1,0 +1,2 @@
+#!/bin/sh
+[[ "$(git rev-parse origin/$(git-get-br))" = "$(git rev-parse $(git-get-br))" ]] && echo True

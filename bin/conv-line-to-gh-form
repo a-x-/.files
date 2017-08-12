@@ -1,0 +1,3 @@
+#!/bin/sh
+FILE_PATH_LINE="$([ "$1" ] && echo $1 || cat -)"
+echo "$(echo "$FILE_PATH_LINE" | gsed -r 's/(:|\+ |: line )([0-9]+)$/#L\2/')"

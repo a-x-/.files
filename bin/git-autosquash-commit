@@ -1,0 +1,24 @@
+#!/bin/sh
+# Разбивает незакомиченные изменения на кусочки диффов и фиксапит к коммитам, в последний раз изменявшим места проекций этих кусочков
+while $([ "$(git diff-index HEAD)" ]); do
+
+    git reset @ .
+
+    # stage one diff chank
+    echo "y\nq" | git add -p $(git status -sb | cut -d ' ' -f 3) > /dev/null
+
+    # diff start line
+    START_LINE=$(git diff --cached | grep -oE '@@ -[0-9]+,' | grep -oE '[0-9]+')
+    echo START_LINE=$START_LINE
+    START_LINE=$((( $START_LINE + 3 )))
+    echo corr. START_LINE=$START_LINE
+
+    # staged file
+    FILE="$(git status -sb | grep -E '^[^ #]' | gsed -r 's/\s+/ /g' | cut -d ' ' -f 2)"
+
+    # blame hash
+    BLAME_HASH=$(git blame @ -L$START_LINE "$FILE" | head -n 1 | cut -d ' ' -f 1)
+
+    git commit --fixup=$BLAME_HASH --no-verify
+
+done

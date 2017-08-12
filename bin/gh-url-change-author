@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+const fs=require('fs'),
+    cl=console.log.bind(console),
+    read=fs.readFileSync.bind(fs),
+    write=fs.writeFileSync.bind(fs),
+    stdin = read('/dev/stdin').toString().trim();
+
+const author = process.argv[2];
+
+console.log(stdin.replace(/\/([^\/]+)\/([^\/]+)\/$/, `/${author}/$2/`));

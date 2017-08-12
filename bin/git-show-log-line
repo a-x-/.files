@@ -1,0 +1,4 @@
+#!/bin/sh
+# print one line from log by HASH
+HASH=$(git rev-parse --short $1)
+git lol "$HASH" | head -n 1

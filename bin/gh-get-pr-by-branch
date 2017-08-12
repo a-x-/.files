@@ -1,0 +1,8 @@
+#!/bin/sh
+branch="$1"
+[ ! "$branch" ] && branch="$(git-get-br)"
+# echo $branch
+_REPO="$(gh-get-url | grep -oE '/[^/]+?/[^/]+?/$')"
+echo _REPO: $_REPO > /dev/stderr
+http https://api.github.com/repos${_REPO}pulls\?per_page=1000 "Authorization: token $(cat ~/.gh-token)" \
+    | jq -r '.[] | {pr:._links.html.href, branch:.head.ref} | select(.branch == "'"$branch"'") | .pr' \

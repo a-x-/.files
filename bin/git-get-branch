@@ -1,0 +1,4 @@
+#!/bin/sh
+# Get current branch
+
+git rev-parse --abbrev-ref @

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+input=$1 # nefedir:SERP-48397
+
+author="$(echo $input | cut -d: -f1)"
+branch="$(echo $input | cut -d: -f2)"
+
+_REPO="$(gh-get-url | grep -oE '/[^/]+?/[^/]+?/$')"
+
+REPO_="$(echo $_REPO | gh-url-change-author $author)"
+
+echo REPO_: $REPO_ > /dev/stderr
+http https://github.yandex-team.ru/api/v3/repos${_REPO}pulls\?per_page=1000 \
+    | jq -r '.[] | {pr:._links.html.href, branch:.head.ref} | select(.branch == "'"$branch"'") | .pr' \
+

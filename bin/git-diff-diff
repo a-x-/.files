@@ -1,0 +1,11 @@
+#!/bin/sh
+# Diff на diff'ы локальной ветки относительно dev и удалённой ветки относительно origin/dev
+# Полезно, но мозговзрывно, по непривычке
+# Часто можно обнаружить нежелательные изменения с помощью этого маргинального инструмента ;)
+
+repo=$([ "$(echo $1)" ] && echo $1 || echo origin)
+
+    git diff $(git merge-base $repo/$(git-get-br) origin/$(git-get-default-branch)) $repo/$(git-get-br) > 1.diff \
+ && git diff $(git merge-base $(git-get-br) origin/$(git-get-default-branch)) $(git-get-br) > 2.diff \
+ && diff 1.diff 2.diff | colordiff | grep --color=never -vE '[<>] (index|@@)' | less -r \
+ && rm 1.diff 2.diff

@@ -1,0 +1,5 @@
+#!/bin/sh
+# git get branch by PR number or link
+
+PR_ID="$(echo $1 | grep -oE '[0-9]+$')"
+http https://github.yandex-team.ru/api/v3/repos/mm-interfaces/fiji/pulls/$PR_ID 'Authorization: token 92fab2789aa086a5b484d6682661815cf540427a' | json head.ref

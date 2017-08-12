@@ -1,0 +1,6 @@
+#!/bin/sh
+PREFIX="$(gh-get-url | sed -E 's|/$||' | sed 's/\.git//')"
+FILE_PATH_LINE="$([ "$1" ] && echo "$1" || cat -)"
+echo "$FILE_PATH_LINE" | while read i; do
+    echo "$(echo "${PREFIX}/blob/$(git-get-default-branch)/$i" | conv-line-to-gh-form)"
+done

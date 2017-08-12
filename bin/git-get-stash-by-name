@@ -1,0 +1,3 @@
+#!/bin/sh
+# get stash id by saved stash name (git stash save 'short name')
+git stash list | grep $1 | cut -d : -f 1

@@ -1,0 +1,138 @@
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
+	quotepath = false # Чтобы не упячилась кириллица в путях
+	editor = mvim -v
+
+[merge]
+	tool = code
+	conflictstyle = merge #diff3
+
+[mergetool "ws"]
+	cmd = webide merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+	trustExitCode = true
+
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
+
+[difftool "ws"]
+	cmd = webide diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+	trustExitCode = true
+
+[branch]
+	autosetuprebase = always
+
+[push]
+	default = current
+
+[color]
+	diff = yes
+	ui = auto
+	# ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
+	whitespace = red reverse
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	di = diff
+	dc = diff --cached
+	ds = diff --staged
+	c = commit
+	pr = pull-request
+	am = commit --amend
+  cp = cherry-pick
+	amend = commit --amend -C HEAD
+	undo = reset --soft HEAD^
+	cp = cherry-pick
+	lg = log -p
+	rb = rebase
+	lod = log --graph --decorate --format='%C(yellow)%h %Cblue%d %Cred%ad %Creset%s' --date=short
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	l = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches 
+	h = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches
+	standup = "!git log --since '1 day ago' --oneline --author $USER"
+	week = "!git log --since '7 day ago' --oneline --author $USER"
+	changedfile = "!git log $(git-get-default-branch)...HEAD --pretty=oneline --abbrev-commit --stat=80 --reverse --follow $(git status -s | cut -c4-)"
+	open = "!open $(gh-get-pr-by-branch $(git-get-br))"
+
+	# Show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+
+	# search commits by message
+	search = "!f() { git log --all --grep=$1; }; f"
+
+	# Find Merge — найти мерж-коммит, с которым был влит коммит. Пример как `git fm 0c23f92`
+	# Тред в рассылке: https://ml.yandex-team.ru/thread/2370000000877081412/
+	fm = "!sh -c 'git show `git rev-list --ancestry-path $0..dev --merges | tail -f`'"
+	exec = "!exec "
+  #clbr = "!git branch --merged | egrep -v '(^\*|master|dev)' | xargs git branch -d"
+
+[diff]
+	noprefix = true # убрать a/ b/ из diff
+	# tool = ws
+	algorithm = patience
+
+[tag]
+	sort = version:refname
+
+[url "git://github.yandex-team.ru/"]
+	insteadOf = "ght:"
+
+[url "git@github.com:"]
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "gh:"
+
+[help]
+	autocorrect = 1
+
+# Put your name and email, and so on into ~/.config/git/config
+# Not HERE
+
+# custom
+[rebase]
+	autoStash = true
+
+[pull]
+	rebase = true
+
+[filter "lfs"]
+	smudge = git-lfs smudge --skip %f
+	required = true
+	clean = git-lfs clean -- %f
+[lfs]
+	batch = true
+	concurrenttransfers = 15
+
+[hub]
+	host = github.com
+
+[user]
+	signingkey = 4BEBCA57
+
+	email = alex@rocketguys.com
+	name = alex
+[status]
+	relativePaths = true
+[commit]
+	gpgsign = true
