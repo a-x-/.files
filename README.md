@@ -9,10 +9,8 @@ dotfiles (mac, webdev, frontend, iterm)
 
 #### todo
 
-brew install zsh-syntax-highlighting
-
-path .files/bin
-
-path ./node_modules/.bin
-
-fix symlinks
+- `brew install zsh-syntax-highlighting`
+- path `.files/bin`
+- path `./node_modules/.bin`
+- fix symlinks
+- track all git init/clone directories for futher system reinstallation/upgrage
