@@ -21,7 +21,7 @@ set hidden                  " hide buffers when they are abandoned
 set autoread                " auto reload changed files
 
 " Display options
-set title                   " show file name in window title
+" set title                   " show file name in window title
 set novisualbell            " mute error bell
 
 set ttyfast                 " Optimize for fast terminal connections

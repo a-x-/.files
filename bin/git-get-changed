@@ -1,2 +1,3 @@
 #!/bin/sh
-git status --porcelain | trim | sed -E 's/( |\\t)+/ /g' | cut -d' ' -f2 | filter-exists
+#git status --porcelain | trim | sed -E 's/( |\\t)+/ /g' | cut -d' ' -f2 | filter-exists
+git diff --name-only | while read f; do echo $(git rev-parse --show-toplevel)/$f; done | filter-exists

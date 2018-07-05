@@ -15,4 +15,16 @@ export PS1=' ❯ '
 export PATH=$PATH:~/dotfiles/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="./node_modules/.bin/:$PATH:$HOME/.rvm/bin"
+export PATH="~/bin:./node_modules/.bin/:$PATH:$HOME/.rvm/bin:$HOME/.local/bin"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f /Users/mxtnr/.travis/travis.sh ] && source /Users/mxtnr/.travis/travis.sh
+
+[ -f $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
+
+export PATH="$HOME/.cargo/bin:$PATH"
+#source /Users/mxtnr/emsdk-portable/emsdk_env.sh 
+
+export EDITOR=code

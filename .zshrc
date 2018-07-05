@@ -12,7 +12,8 @@ source ~/dotfiles/history.zsh
 source ~/dotfiles/misc.zsh
 source ~/dotfiles/spectrum.zsh
 
-export PS1='%S%B %2~ ❯ %s%b '
+#export PS1='%S%B %2~ ❯ %s%b '
+export PS1='%2~ ❯ %s'
 
 setopt PROMPT_SUBST
 # export RPROMPT='$(~/.cabal/bin/git-prompt green)'
@@ -26,6 +27,14 @@ source ~/.zsh-better-npm-completion/zsh-better-npm-completion.plugin.zsh
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [[ -f /Users/mxtnr/xp/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/mxtnr/xp/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
 
-unsetopt EXTENDED_GLOB # allow git --reset @^
-
 autoload -U zmv # Mass renaming files with zmv
+
+source ~/git-flow-completion.zsh
+
+#source ~/.bin/tmuxinator.zsh
+
+unsetopt EXTENDED_GLOB
+
+export EMAIL=alex@rocketguys.com
+
+export PATH="./node_modules/.bin/:$PATH"

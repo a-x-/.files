@@ -1,3 +1,7 @@
 #!/bin/sh
 # output default branch of current repo. e.g.: dev|master|develop|...
+
+# how to fix: git remote set-head origin -a
+
+#git branch | grep -E '^(master|dev|develop)$' | trim
 git branch -a | grep 'remotes/origin/HEAD' | grep -oE '\w+$'

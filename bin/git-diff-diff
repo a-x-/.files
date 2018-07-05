@@ -5,7 +5,7 @@
 
 repo=$([ "$(echo $1)" ] && echo $1 || echo origin)
 
-    git diff $(git merge-base $repo/$(git-get-br) origin/$(git-get-default-branch)) $repo/$(git-get-br) > 1.diff \
- && git diff $(git merge-base $(git-get-br) origin/$(git-get-default-branch)) $(git-get-br) > 2.diff \
- && diff 1.diff 2.diff | colordiff | grep --color=never -vE '[<>] (index|@@)' | less -r \
- && rm 1.diff 2.diff
+   git diff $(git merge-base $repo/$(git-get-br) origin/$(git-get-default-branch)) $repo/$(git-get-br) -- . ':(exclude)package-lock.json' > 1.diff \
+&& git diff $(git merge-base $(git-get-br) origin/$(git-get-default-branch)) $(git-get-br) -- . ':(exclude)package-lock.json' > 2.diff \
+&& diff 1.diff 2.diff | colordiff | grep --color=never -vE '[<>] (index|@@)' | less -r \
+&& rm 1.diff 2.diff

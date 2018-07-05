@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+dev=$(git config --local gitflow.branch.develop)
+git fetch --all --prune
+if [[ "${dev}" ]]; then
+  echo ✅  Git-Flow: Rebase to DEV
+  git checkout dev && git pull && git checkout - && git-flow feature rebase
+fi
+if [[ ! "${dev}" ]]; then
+  echo ⚠️  GIT: REBASE TO MASTER
+  git rebase origin/master
+fi

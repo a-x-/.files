@@ -5,15 +5,15 @@ alias ll='ls -Foalh'
 # git
 alias gs='git status'
 alias gca='git commit -a --no-ed --amend'
-alias gd='git diff'
-alias gdc='git diff --cached'
 alias gf='git fetch --all --prune' # fetch & clear old branches
-alias grd='gf;git rebase origin/master' # rebase dev
+#alias grd='gf;git rebase origin/master' # rebase dev
 alias gr='git remote -v' # show remotes
-alias gdd='git diff origin/master' # git diff dev
+alias gp='git push'
 alias gpf='git push --force'
 alias gl='git lol'
 alias gla='git lola'
+alias gsync='git pull --rebase && git push'
+alias gles='/usr/local/bin/gl'
 
 alias ggc=git-get-changed # print list of any changed files in stage/unstage
 alias gse='$EDITOR $(git-get-changed)' # git status: edit all changed files
@@ -34,6 +34,19 @@ function gcm() {
 function grsc() {
     git reset @ $*; git checkout $*
 }
+
+function get_diff_exclude() {
+  echo "':(exclude)package-lock.json' ':(exclude)$(git-get-root)/public/webpack/admin'"
+}
+function gd() {
+  eval git diff --relative --ignore-space-change $* -- . $(get_diff_exclude)
+}
+function gdc() {
+  eval git diff --relative --cached --ignore-space-change $* -- . $(get_diff_exclude)
+}
+function gdd() {
+  eval git diff --relative origin/master --ignore-space-change $* -- . $(get_diff_exclude)
+}
 # /git
 
 # misc
@@ -47,6 +60,30 @@ alias camcap=take-webcam-picture
 function take() {
   mkdir $1; cd $1
 }
+function gcopen() {
+  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="$*"
+}
+
+function touchf() {
+    file_path=$1
+    dir_path="$(echo $file_path | grep -oE '^.+/')"
+
+    # file_name="$(echo $file_path | grep -oE '[^/]+$')"
+    [ "$(echo $dir_path)" ] && mkdir -p $dir_path
+    # cd $dir_path
+    touch $file_path
+}
+
+function mvf() {
+    touchf "$2"
+    mv "$1" "$2"
+}
+
+function vimf() {
+    touchf "$1"
+    vim "$1"
+}
+
 # /misc
 
 # npm maintenance bash scripts
