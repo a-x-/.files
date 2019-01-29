@@ -1,0 +1,12 @@
+#!/bin/sh
+aliases_list=$(grep '^alias ' -B1 ~/dotfiles/aliases.sh \
+    | nodepipe "stdout = stdin.replace(/^(#.+)\\nalias (.+)=(.+)/gm, 'alias \$2=\$3 # \$1')" \
+    | sed 's/# #/#/' | grep alias | grep -v unalias)
+aliases_list_length=$(echo "$aliases_list" | wc -l)
+i=$(node -p "Math.round(Math.random() * $aliases_list_length + 1)")
+aliases_list_random=$(echo "$aliases_list" | sed "$i!d")
+aliases_list_random_descr=$(echo $aliases_list_random | cut -d'#' -f2 | trim)
+aliases_list_random_alias=$(echo $aliases_list_random | cut -d'#' -f1 | trim)
+
+[ "$(echo $aliases_list_random | grep '#')" ] && echo $BOLD$BLUE$aliases_list_random_descr$RESET
+echo $BOLD$ORANGE$aliases_list_random_alias$RESET

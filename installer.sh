@@ -3,6 +3,9 @@
 # Original version is created by shoma2da
 # https://github.com/shoma2da/neobundle_installer
 
+echo install zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
 if [ $# -ne 1 ]; then
   echo "You must specify the installation directory!"
   exit 1

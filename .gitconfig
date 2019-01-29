@@ -4,6 +4,7 @@
 	editor = mvim -v
 	excludesfile = ~/.gitignore
 	ignorecase = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [merge]
 	tool = vscode
@@ -17,9 +18,20 @@
 	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
 	trustExitCode = true
 
+[mergetool "vscode"]
+	cmd = "code --wait " # cmd = code --wait $MERGED
+
 [difftool "ws"]
 	cmd = webide diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
 	trustExitCode = true
+
+[difftool "vsc-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[diff]
+	noprefix = true # remove a/ b/ from diff
+	algorithm = patience
+  # tool = vsc-difftool
 
 [branch]
 	autosetuprebase = always
@@ -29,7 +41,7 @@
 
 [color]
 	diff = yes
-	ui = auto
+	ui = true
 	# ui = true
 
 [color "branch"]
@@ -39,10 +51,11 @@
 
 [color "diff"]
 	meta = yellow
-	frag = magenta
-	old = red
-	new = green
+	frag = magenta bold
+	old = red bold
+	new = green bold
 	whitespace = red reverse
+	commit = yellow bold
 
 [color "status"]
 	added = yellow
@@ -53,7 +66,6 @@
 	st = status
 	br = branch
 	co = checkout
-	di = diff
 	dc = diff --cached
 	ds = diff --staged
 	c = commit
@@ -64,12 +76,13 @@
 	undo = reset --soft HEAD^
 	cp = cherry-pick
 	lg = log -p
-	rb = rebase
-	lod = log --graph --decorate --format='%C(yellow)%h %Cblue%d %Cred%ad %Creset%s' --date=short
+	rb = rebase 
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches
+
+	lod = log --graph --decorate --format='%C(yellow)%h %Cblue%d %Cred%ad %Creset%s' --date=short
 	l = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches 
 	h = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches
 	standup = "!git log --since '1 day ago' --oneline --author $USER"
 	week = "!git log --since '7 day ago' --oneline --author $USER"
@@ -87,11 +100,6 @@
 	fm = "!sh -c 'git show `git rev-list --ancestry-path $0..dev --merges | tail -f`'"
 	exec = "!exec "
   #clbr = "!git branch --merged | egrep -v '(^\*|master|dev)' | xargs git branch -d"
-  
-[diff]
-	noprefix = true # remove a/ b/ from diff
-	# tool = ws
-	algorithm = patience
 
 [tag]
 	sort = version:refname
@@ -114,6 +122,7 @@
 # custom
 [rebase]
 	autoStash = true
+	autoSquash = true
 
 [pull]
 	rebase = true
@@ -122,9 +131,10 @@
 	smudge = git-lfs smudge --skip %f
 	required = true
 	clean = git-lfs clean -- %f
-[lfs]
-	batch = true
-	concurrenttransfers = 15
+
+# [lfs]
+# 	batch = true
+# 	concurrenttransfers = 15
 
 [hub]
 	host = github.com
@@ -134,10 +144,15 @@
 
 	email = alex@rocketguys.com
 	name = alex
+
 [status]
 	relativePaths = true
 	submoduleSummary = true
+
 [commit]
-	gpgsign = true
-[mergetool "vscode"]
-	cmd = "code --wait "
+	#gpgsign = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
