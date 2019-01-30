@@ -3,6 +3,8 @@
 # Original version is created by shoma2da
 # https://github.com/shoma2da/neobundle_installer
 
+# !WARN! INSTALLER IS OUT OF DATE
+
 echo install zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
