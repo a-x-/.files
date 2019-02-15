@@ -7,7 +7,7 @@ alias ll='ls -Foalh'
 alias gs='git status'
 alias gca='git commit -v --no-ed --amend'
 alias gcaa='git commit -va --no-ed --amend'
-alias gf='git fetch --all --prune' # fetch & clear old branches
+alias gf='git fetch --all --prune 2>&1 | suggest_remove_branch' # fetch & clear old branches
 alias grd='gf;git rebase origin/master' # rebase trunk
 alias gr='git remote -v' # show remotes
 alias gp='git push'
@@ -25,6 +25,29 @@ alias go='git open'
 alias gup=gh-get-url-by-path
 
 alias ggr=git-get-root
+
+color_blue_normal='\033[94m'
+color_blue_bold='\033[1;94m'
+color_reset='\033[0m'
+
+function match_local_branches() {
+  cat - | while read br; do
+    if [[ "$( git branch --no-color --no-column --list $br --format '%(refname)' )" == "refs/heads/$br" ]]; then
+      echo -n " $br"
+    fi
+  done
+}
+
+function suggest_remove_branch() {
+  gf_output="$(cat -)"
+  echo "$gf_output" | grep -vE '^\[\d+\]'
+
+  deleted_brs="$(echo "$gf_output" | grep -- '- \[deleted\]' | grep -E -o -- '-> origin/.+$' | gsed 's|-> origin/||g')"
+  matched_brs="$(echo "$deleted_brs" | match_local_branches)"
+  if [[ "$matched_brs" ]]; then
+    echo "\n${color_blue_normal}💡 Pro Tip: ${color_blue_bold}git branch -D$matched_brs${color_reset}\n"
+  fi
+}
 
 function gc__() {
     msg="$@"; git commit -vam "$msg"
