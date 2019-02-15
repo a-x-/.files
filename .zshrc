@@ -1,14 +1,28 @@
+# fix after update zsh
+fpath=(~/.zsh/zsh-completions/src /usr/local/Cellar/zsh/5.7.1/share/zsh/functions $fpath)
+# __zplug::utils::ansi::remove:17: maximum nested function level reached; increase FUNCNEST?
+FUNCNEST=1500
+
 source ~/.zplug/init.zsh
 
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load # --verbose
+
 source ~/.profile
-for file in keybindings history misc spectrum aliases; do source ~/dotfiles/${file}.zsh; done
+for file in 'keybindings' 'history' 'misc' 'spectrum' 'aliases'; do source ~/dotfiles/${file}.zsh; done
 unset file
 
 #
 # completion
 #
 
-fpath=(~/.zsh/zsh-completions/src $fpath)
 zplug "lukechilds/zsh-better-npm-completion", defer:2
 zplug "zsh-users/zsh-completions"
 # autoload -U compinit && compinit
@@ -47,14 +61,20 @@ SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_CHAR_SYMBOL='❯'
 SPACESHIP_CHAR_SUFFIX=' '
 SPACESHIP_CHAR_SYMBOL_ROOT='# '
+
 SPACESHIP_GIT_STATUS_SHOW=false
+
 SPACESHIP_HG_SHOW=false
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_KUBECONTEXT_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_GIT_BRANCH_COLOR=white
+SPACESHIP_RUBY_SYMBOL=
 
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+SPACESHIP_DIR_COLOR=cyan #027 # some blue
+SPACESHIP_GIT_BRANCH_COLOR=244 # some silver
+SPACESHIP_RUBY_COLOR=244 # some silver
 
 # ZSH port of Fish shell's history search feature https://github.com/zsh-users/zsh-history-substring-search
 zplug "zsh-users/zsh-history-substring-search"

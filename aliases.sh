@@ -5,8 +5,8 @@ alias ll='ls -Foalh'
 # git
 
 alias gs='git status'
-alias gca='git commit --no-ed --amend'
-alias gcaa='git commit -a --no-ed --amend'
+alias gca='git commit -v --no-ed --amend'
+alias gcaa='git commit -va --no-ed --amend'
 alias gf='git fetch --all --prune' # fetch & clear old branches
 alias grd='gf;git rebase origin/master' # rebase trunk
 alias gr='git remote -v' # show remotes
@@ -27,14 +27,14 @@ alias gup=gh-get-url-by-path
 alias ggr=git-get-root
 
 function gc__() {
-    msg="$@"; git commit -am "$msg"
+    msg="$@"; git commit -vam "$msg"
 }
 alias gc='noglob gc__'
 function gcn() {
-    msg="$@"; git commit -anm "$msg"
+    msg="$@"; git commit -vanm "$msg"
 }
 function gcm() {
-    msg="$@"; git commit -m "$msg"
+    msg="$@"; git commit -vm "$msg"
 }
 function grsc() {
     git reset @ $*; git checkout $*
@@ -103,4 +103,4 @@ function vimf() {
 # /npm maintenance bash scripts
 
 
-alias -g '|/'='| grep -i' # / foo |/ bar #= grep foo | grep bar
+alias port='sudo lsof -iTCP -sTCP:LISTEN -n -P'
