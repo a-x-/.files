@@ -101,3 +101,5 @@ typings/
 
 # Serverless directories
 .serverless
+
+.tmux/resurrect/
