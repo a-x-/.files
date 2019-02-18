@@ -25,6 +25,7 @@ alias go='git open'
 alias gup=gh-get-url-by-path
 
 alias ggr=git-get-root
+alias ggb=git-get-branch
 
 color_blue_normal='\033[94m'
 color_blue_bold='\033[1;94m'
@@ -47,6 +48,15 @@ function suggest_remove_branch() {
   if [[ "$matched_brs" ]]; then
     echo "\n${color_blue_normal}💡 Pro Tip: ${color_blue_bold}git branch -D$matched_brs${color_reset}\n"
   fi
+}
+
+# todo: удалять старую, только если она перед этим была удалена в репе
+function gn() {
+  NEW_BR=$1
+  _ rm
+  gf
+  git co -b $NEW_BR origin/master
+  git br -D `git-get-br`
 }
 
 function gc__() {

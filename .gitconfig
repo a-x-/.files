@@ -77,7 +77,9 @@
 	cp = cherry-pick
 	lg = log -p
 	rb = rebase
+	# Нормальный лог, который сильно упрощает понимание
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	# Такой же лог как git lol, но для всех веток
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches
 

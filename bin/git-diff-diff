@@ -1,11 +1,39 @@
 #!/bin/sh
 # Diff на diff'ы локальной ветки относительно dev и удалённой ветки относительно origin/dev
 # Полезно, но мозговзрывно, по непривычке
-# Часто можно обнаружить нежелательные изменения с помощью этого маргинального инструмента ;)
+# Часто можно обнаружить нежелательные изменения в ветке
+# после интерактивного ребейза с помощью этого маргинального инструмента ;)
+# Ни раз спасало в тяжёлых ситуациях!
 
 repo=$([ "$(echo $1)" ] && echo $1 || echo origin)
 
-   git diff $(git merge-base $repo/$(git-get-br) origin/$(git-get-default-branch)) $repo/$(git-get-br) -- . ':(exclude)package-lock.json' > 1.diff \
-&& git diff $(git merge-base $(git-get-br) origin/$(git-get-default-branch)) $(git-get-br) -- . ':(exclude)package-lock.json' > 2.diff \
+default_branch="$repo/$(git-get-default-branch)" # master
+local_branch_start_at="$(git-get-common-parent $(git-get-br) $default_branch)"
+remote_branch_start_at="$(git-get-common-parent $repo/$(git-get-br) $default_branch)"
+
+   git diff $remote_branch_start_at $repo/$(git-get-br) -- . ':(exclude)manifest.json' ':(exclude)package-lock.json' > 1.diff \
+&& git diff $local_branch_start_at $(git-get-br) -- . ':(exclude)manifest.json' ':(exclude)package-lock.json' > 2.diff \
 && diff 1.diff 2.diff | colordiff | grep --color=never -vE '[<>] (index|@@)' | less -r \
 && rm 1.diff 2.diff
+
+#
+# examples
+#
+
+# *   origin/branch
+# | * branch
+# | |
+# | /
+# *   origin/master
+# |
+
+
+# * origin/master
+# | * branch
+# | /
+# *   fslf4534 = git-get-common-parent branch origin/master
+# | * origin/branch
+# | |
+# | /
+# *   dfssfdfsf = git-get-common-parent origin/branch origin/master
+# |
