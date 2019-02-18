@@ -48,3 +48,4 @@ dotfiles (mac, webdev, frontend, iterm)
 - automate symlinks
 - track all git init/clone directories for futher system reinstallation/upgrage
 - try to use `.ondirc` ([example](https://github.com/tenorok/dotfiles/blob/master/bash_osx#L1-L11))
+- add rare used git aliases tip, add rare used bin tip
