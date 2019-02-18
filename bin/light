@@ -1,2 +1,0 @@
-#!/bin/sh
-curl "https://light.invntrm.ru/$1" 2>/dev/null
