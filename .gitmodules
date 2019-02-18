@@ -1,3 +1,3 @@
 [submodule "vscode-configs"]
 	path = vscode-configs
-	url = git@github.com:a-x-/HOME_Documents_Preferences_VSCode.git
+	url = git@github.com:a-x-/vscode-configs.git
