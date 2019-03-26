@@ -1,5 +1,7 @@
 #!/bin/sh
-# see also: https://www.npmjs.com/package/nip
+# not see also: https://www.npmjs.com/package/nip
+# see also: https://www.npmjs.com/package/replace
+# and https://www.npmjs.com/package/rexreplace
 # usage: echo 1 | nodepipe "stdout = stdin.replace(1, 2)"
 
 [ "$1" ] && fn=$1 || fn='stdout = stdin'

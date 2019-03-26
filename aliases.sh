@@ -8,7 +8,7 @@ alias gs='git status'
 alias gca='git commit -v --no-ed --amend'
 alias gcaa='git commit -va --no-ed --amend'
 alias gf='git fetch --all --prune 2>&1 | suggest_remove_branch' # fetch & clear old branches
-alias grd='gf;git rebase origin/master' # rebase trunk
+#alias grd='gf;git rebase origin/master' # rebase trunk
 alias gr='git remote -v' # show remotes
 alias gp='git push'
 alias gpf='git push --force'
@@ -64,10 +64,13 @@ function gc__() {
 }
 alias gc='noglob gc__'
 function gcn() {
-    msg="$@"; git commit -vanm "$msg"
+    msg="$@"; git commit -vnm "$msg"
 }
 function gcm() {
     msg="$@"; git commit -vm "$msg"
+}
+function gco() {
+    _ rm; git checkout $*
 }
 function grsc() {
     git reset @ $*; git checkout $*

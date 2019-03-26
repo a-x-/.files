@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+gf_output="$(cat -)"
+echo "$gf_output" | grep -vE '^\[\d+\]'
+
+deleted_brs="$(echo "$gf_output" | grep -- '- \[deleted\]' | grep -E -o -- '-> origin/.+$' | gsed 's|-> origin/||g')"
+matched_brs="$(echo "$deleted_brs" | match_local_branches)"
+if [[ "$matched_brs" ]]; then
+    echo "\n${color_blue_normal}💡 Pro Tip: ${color_blue_bold}git branch -D$matched_brs${color_reset}\n"
+fi
+
