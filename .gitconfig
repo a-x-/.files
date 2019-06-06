@@ -71,7 +71,7 @@
 	c = commit
 	pr = pull-request
 	am = commit --amend
-  cp = cherry-pick
+	cp = cherry-pick
 	amend = commit --amend -C HEAD
 	undo = reset --soft HEAD^
 	cp = cherry-pick
