@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-./_ rm
 git fetch --all --prune 2>&1 | $(dirname "$0")/suggest_remove_branch
 #git fetch --all --prune
 git rb --onto origin/master `git-get-common-parent` `git-get-branch`

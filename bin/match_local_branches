@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+cat - | while read br; do
+  if [[ "$( git branch --no-color --no-column --list $br --format '%(refname)' )" == "refs/heads/$br" ]]; then
+    echo -n " $br"
+  fi
+done

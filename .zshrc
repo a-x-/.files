@@ -13,7 +13,8 @@ if ! zplug check --verbose; then
   fi
 fi
 
-zplug load # --verbose
+# zplug load # --verbose
+# see bottom
 
 source ~/.profile
 for file in 'keybindings' 'history' 'misc' 'spectrum' 'aliases'; do source ~/dotfiles/${file}.zsh; done
@@ -85,7 +86,8 @@ zplug "djui/alias-tips"
 # Fish-like autosuggestions for zsh
 zplug "zsh-users/zsh-autosuggestions"
 
-zplug "marzocchi/zsh-notify"
+# doesn't work
+# zplug "marzocchi/zsh-notify"
 
 # # Enable zsh-autosuggestions
 # zle-line-init() {

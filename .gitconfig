@@ -73,7 +73,7 @@
 	am = commit --amend
 	cp = cherry-pick
 	amend = commit --amend -C HEAD
-	undo = reset --soft HEAD^
+	undo = !legit undo
 	cp = cherry-pick
 	lg = log -p
 	rb = rebase
@@ -103,6 +103,11 @@
 
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
+	switch = !legit switch
+	sync = !legit sync
+	publish = !legit publish
+	unpublish = !legit unpublish
+	branches = !legit branches
 
 	# clean-branches-dryrun = "!git branch --merged | egrep -v '(^\*|master|dev)' | xargs echo git branch -d"
 

@@ -21,7 +21,7 @@ alias gpr='hub pull-request'
 alias ggc=git-get-changed # print list of any changed files in stage/unstage
 alias gse='$EDITOR $(git-get-changed)' # git status: edit all changed files
 
-alias go='git open'
+#alias go='git open'
 alias gup=gh-get-url-by-path
 
 alias ggr=git-get-root
@@ -99,7 +99,7 @@ alias copy=pbcopy
 alias vim='mvim -v'
 alias svgo='svgo --enable=removeTitle --enable=removeUselessStrokeAndFill --enable=collapseGroups --enable=removeUselessDefs --enable=cleanupIDs'
 
-alias take-webcam-picture="imagesnap -w 1"
+alias take-webcam-picture="imagesnap -w 1 '/Users/mxtnr/Library/Mobile Documents/com~apple~CloudDocs/Photos/webcam/$(date '+%d.%m.%y-%H.%M.jpg')'"
 alias camcap=take-webcam-picture
 function take() {
   mkdir $1; cd $1
