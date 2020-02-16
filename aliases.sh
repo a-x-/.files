@@ -11,7 +11,7 @@ alias gf='git fetch --all --prune 2>&1 | suggest_remove_branch' # fetch & clear 
 #alias grd='gf;git rebase origin/master' # rebase trunk
 alias gr='git remote -v' # show remotes
 alias gp='git push'
-alias gpf='git push --force'
+# alias gpf='git push --force'
 alias gl='git lol'
 alias gla='git lola'
 alias gsync='git pull --rebase && git push'
@@ -26,6 +26,17 @@ alias gup=gh-get-url-by-path
 
 alias ggr=git-get-root
 alias ggb=git-get-branch
+
+# git push --force with pre-checks
+function gpf() {
+    BR=$1
+    git fetch
+    if [ "$(git show-ref refs/heads/$BR)" = "$(git show-ref refs/remotes/origin/$BR)" ]; then
+        git push --force origin $BR
+    else
+        echo 'В origin-ветке что-то новенькое, проверь!'
+    fi
+}
 
 color_blue_normal='\033[94m'
 color_blue_bold='\033[1;94m'
@@ -140,3 +151,4 @@ function vimf() {
 
 
 alias port='sudo lsof -iTCP -sTCP:LISTEN -n -P'
+
