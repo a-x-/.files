@@ -27,6 +27,8 @@ unset file
 zplug "lukechilds/zsh-better-npm-completion", defer:2
 zplug "zsh-users/zsh-completions"
 # autoload -U compinit && compinit
+autoload -U select-word-style
+select-word-style bash
 
 # cached completion https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
 autoload -Uz compinit
