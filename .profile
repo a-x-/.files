@@ -21,7 +21,7 @@ export LANG=en_US.UTF-8
 eval $(thefuck --alias)
 eval "$(fasd --init auto)"
 
-for file in exports aliases; do source ~/dotfiles/${file}.sh; done
+for file in exports aliases; do source ~/.files/${file}.sh; done
 unset file
 
 # added by travis gem
