@@ -1,17 +1,4 @@
 #
-# FELIX RUBY and etc.
-#
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$HOME/.rvm/bin:$PATH"
-export PATH="/usr/local/opt/imagemagick@6/bin:/usr/local/Cellar/postgresql@9.6/9.6.10_1/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig" # try to fix postgres
-
-function _(){ /Users/mxtnr/rocket/felix/frontend/projects/admin/_ $*; }
-
-#
 # Front
 #
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
@@ -21,10 +8,10 @@ export PATH="./node_modules/.bin/:$PATH"
 # General Purpose Exports
 #
 
-export EMAIL=alex@rocketguys.com
+export EMAIL=invntrm@gmail.com
 export EDITOR='mvim -v'
 export REACT_EDITOR=code
-export PATH=~/dotfiles/bin:$PATH
+export PATH=~/.files/bin:$PATH
 export LANG=en_US.UTF-8
 
 #
