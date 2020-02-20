@@ -1,5 +1,5 @@
 # fix after update zsh
-fpath=(~/.zsh/zsh-completions/src /usr/local/Cellar/zsh/5.7.1/share/zsh/functions $fpath)
+fpath=(~/.zsh/zsh-completions/src $fpath)
 # __zplug::utils::ansi::remove:17: maximum nested function level reached; increase FUNCNEST?
 FUNCNEST=1500
 
@@ -17,7 +17,7 @@ fi
 # see bottom
 
 source ~/.profile
-for file in 'keybindings' 'history' 'misc' 'spectrum' 'aliases'; do source ~/dotfiles/${file}.zsh; done
+for file in 'keybindings' 'history' 'misc' 'spectrum' 'aliases'; do source ~/.files/${file}.zsh; done
 unset file
 
 #
