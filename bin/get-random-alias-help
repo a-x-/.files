@@ -1,5 +1,5 @@
 #!/bin/sh
-aliases_list=$(grep '^alias ' -B1 ~/dotfiles/aliases.sh \
+aliases_list=$(grep '^alias ' -B1 ~/.files/aliases.sh \
     | nodepipe "stdout = stdin.replace(/^(#.+)\\nalias (.+)=(.+)/gm, 'alias \$2=\$3 # \$1')" \
     | sed 's/# #/#/' | grep alias | grep -v unalias)
 aliases_list_length=$(echo "$aliases_list" | wc -l)
