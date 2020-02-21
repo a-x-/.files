@@ -1,8 +1,0 @@
-#!/bin/zsh
-# get broker iis balance
-PATH=/usr/local/bin/:$PATH
-broker_psswd=$(sudo security find-internet-password  -a invntrm -j 'lk.open-broker.ru' -w)
-cookie=$(http -fh post 'https://lk.open-broker.ru/users/login/' 'fakePassword=' 'LoginForm[username]=invntrm' "LoginForm[password]=$broker_psswd"|grep Set-Cookie|cut -d: -f2)
-http 'https://lk.open-broker.ru/api/v1/user/clients/1239024/portfolios/2200000000158674?ref=instruments' "Cookie:$cookie" | jq .Portfolio.value
-unset broker_psswd
-
