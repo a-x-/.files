@@ -4,7 +4,9 @@
 
 # install something else: https://github.com/a-x-/apps
 
-xcode-select --install
+# install brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# xcode-select --install # — brew installs it itself
 
 # todo: create some symlinks in `~`
 ln -s .files/.zshrc .files/.gitconfig .files/.tmux/ .files/.tmux.conf .files/.vimrc .files/.profile .
