@@ -36,3 +36,8 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 zplug install
 
 # install https://github.com/Shougo/dein.vim
+
+#
+#
+echo "\n\n setup everything"
+echo "Please, run Bunch of automatic settings at https://github.com/a-x-/apps/blob/master/prepare-installed-os.md"
