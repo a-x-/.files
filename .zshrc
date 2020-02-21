@@ -5,9 +5,6 @@ FUNCNEST=1500
 
 source ~/.zplug/init.zsh
 
-# Install plugins if there are plugins that have not been installed
-zplug install 2>/dev/null
-
 # zplug load # --verbose
 # see bottom
 
