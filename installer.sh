@@ -17,7 +17,7 @@ ln -s .files/.zshrc .files/.gitconfig .files/.tmux/ .files/.tmux.conf .files/.vi
 #
 #
 echo "\n\n install brew packages"
-IGNORE_COMMENTS='s/#.+//'
+IGNORE_COMMENTS='s/#.*//'
 brew install git && \
 mkdir ~/xp && cd ~/xp && \
 git clone https://github.com/a-x-/apps.git && cd apps && \
