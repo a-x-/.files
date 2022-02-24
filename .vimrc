@@ -1,3 +1,6 @@
+
+" Plug: https://github.com/junegunn/vim-plug
+
 scriptencoding utf-8
 
 set nocompatible

@@ -34,7 +34,7 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 # Install plugins if there are plugins that have not been installed
 zplug install
 
-# install https://github.com/Shougo/dein.vim
+# manually install: https://github.com/junegunn/vim-plug
 
 #
 #

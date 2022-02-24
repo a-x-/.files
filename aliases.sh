@@ -107,7 +107,7 @@ alias git-init="git init && echo '# MacOS #' > .gitignore && curl https://raw.gi
 # misc
 alias /='rg'
 alias copy=pbcopy
-alias vim='mvim -v'
+#alias vim='mvim -v'
 alias svgo='svgo --enable=removeTitle --enable=removeUselessStrokeAndFill --enable=collapseGroups --enable=removeUselessDefs --enable=cleanupIDs'
 
 alias take-webcam-picture="imagesnap -w 1 '/Users/mxtnr/Library/Mobile Documents/com~apple~CloudDocs/Photos/webcam/$(date '+%d.%m.%y-%H.%M.jpg')'"

@@ -9,17 +9,20 @@ export PATH="./node_modules/.bin/:$PATH"
 #
 
 export EMAIL=invntrm@gmail.com
-export EDITOR='mvim -v'
+#export EDITOR='mvim -v'
+export EDITOR='vim'
 export REACT_EDITOR=code
 export PATH=~/.files/bin:$PATH
 export LANG=en_US.UTF-8
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 
 #
 # HELPERS
 #
 
-eval $(thefuck --alias)
-eval "$(fasd --init auto)"
+#eval $(thefuck --alias)
+#eval "$(fasd --init auto)"
 
 for file in exports aliases; do source ~/.files/${file}.sh; done
 unset file
@@ -54,3 +57,4 @@ if [[ $RANDOM > 8191 ]]; then
   echo '                ||----w |'
   echo '                ||     ||'
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
