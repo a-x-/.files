@@ -35,6 +35,8 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 zplug install
 
 # manually install: https://github.com/junegunn/vim-plug
+# 1. curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# 2. run vim and call `:PlugInstall`
 
 #
 #
