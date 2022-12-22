@@ -12,6 +12,7 @@ echo "\n\n install brew..."
 #
 echo "\n\n create some symlinks at home dir..."
 ln -s .files/.zshrc .files/.gitconfig .files/.tmux/ .files/.tmux.conf .files/.vimrc .files/.profile .
+mkdir ~/.nvm
 
 
 #
