@@ -153,8 +153,8 @@
 [user]
 	signingkey = 4BEBCA57
 
-	email = alex@rocketguys.com
-	name = alex
+        email = invntrm@gmail.com
+        name = Alexander
 
 [status]
 	relativePaths = true
