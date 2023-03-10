@@ -6,3 +6,6 @@
 
 #export PATH="$HOME/.cargo/bin:$PATH"
 #source /Users/mxtnr/emsdk-portable/emsdk_env.sh
+
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH" 
