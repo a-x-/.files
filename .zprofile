@@ -1,5 +1,5 @@
 # fix after update zsh
-fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.zsh/zsh-completions/src /opt/homebrew/share/zsh/site-functions $fpath)
 # __zplug::utils::ansi::remove:17: maximum nested function level reached; increase FUNCNEST?
 FUNCNEST=1500
 
