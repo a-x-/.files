@@ -4,8 +4,8 @@
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 export PATH="./node_modules/.bin/:$PATH"
 export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 #
@@ -14,14 +14,13 @@ export NVM_DIR="$HOME/.nvm"
 
 export EMAIL=invntrm@gmail.com
 #export EDITOR='mvim -v'
-export EDITOR='vim'
+#export EDITOR='vim'
+export EDITOR='code'
 export REACT_EDITOR=code
-export PATH=~/.files/bin:$PATH
 export LANG=en_US.UTF-8
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
 export BUN_INSTALL="$HOME/.bun" 
-export PATH="$BUN_INSTALL/bin:$PATH" 
+export PATH="$BUN_INSTALL/bin:$HOME/.files/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 #
 # HELPERS
@@ -63,4 +62,5 @@ if [[ $RANDOM > 8191 ]]; then
   echo '                ||----w |'
   echo '                ||     ||'
 fi
-eval "$($(brew --prefix)/bin/brew shellenv)"
+#eval "$($(brew --prefix)/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
