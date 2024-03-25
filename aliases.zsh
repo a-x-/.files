@@ -2,7 +2,7 @@
 # ZSH SPECIFIC Aliases and functions
 # ---------------------------------------------------
 
-alias zshc="vim ~/.zshrc; source ~/.zshrc"
+alias zshc="vim ~/.zprofile; source ~/.zprofile"
 # alias ohmyzsh="~/.oh-my-zsh"
 
 # ^Z instead of `fg`

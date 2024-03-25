@@ -11,7 +11,7 @@ echo "\n\n install brew..."
 #
 #
 echo "\n\n create some symlinks at home dir..."
-ln -s .files/.zshrc .files/.gitconfig .files/.tmux/ .files/.tmux.conf .files/.vimrc .files/.profile .
+ln -s .files/.zprofile .files/.gitconfig .files/.tmux/ .files/.tmux.conf .files/.vimrc .files/.profile .
 mkdir ~/.nvm
 
 
@@ -30,8 +30,7 @@ cat ~/xp/apps/vscode.list     | sed -E '/^#|^$/d' | sed -E 's/#.*//' | while rea
 #
 #
 echo "\n\n install zplug..."
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-. ~/.zshrc
+. ~/.zprofile
 # Install plugins if there are plugins that have not been installed
 zplug install
 
