@@ -38,6 +38,10 @@ zplug install
 # 1. curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # 2. run vim and call `:PlugInstall`
 
+# Fonts
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
+
 #
 #
 echo "\n\n setup everything"
