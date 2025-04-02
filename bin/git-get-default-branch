@@ -3,5 +3,6 @@
 
 # how to fix: git remote set-head origin -a
 
-#git branch | grep -E '^(master|dev|develop)$' | trim
-git branch -a | grep 'remotes/origin/HEAD' | grep -oE '\w+$'
+# git branch | grep -E '^(master|dev|develop)$' | trim
+# git branch -a | grep 'remotes/origin/HEAD' | grep -oE '\w+$' # Не работает на Gitlab 
+git branch -a | grep 'remotes/origin' | grep -E '(master|dev|develop)$' | grep --invert-match -- '->' | sed 's|remotes/origin/||g' | trim

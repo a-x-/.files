@@ -1,3 +1,8 @@
+function take-webcam-picture() {
+  imagesnap -w 1 "$HOME/Pictures/webcam/$(date '+%Y-%m-%d-%H.%M.jpg')"
+}
+alias camcap=take-webcam-picture
+
 alias py=python3
 
 alias ll='ls -Foalh'
@@ -14,12 +19,36 @@ alias gp='git push'
 # alias gpf='git push --force'
 alias gl='git lol'
 alias gla='git lola'
+# git log for all my branches
+function glm() {
+  git branch | sed 's/^[* ]*//' | awk '{print $0 " origin/" $0}' | xargs git lol --ignore-missing 
+}
+# git-rebase-branch
+function grb() {
+  NEW_TARGET=$1
+  CURRENT_BRANCH=$(git-get-branch)
+  OLD_BRANCH=$(git-get-common-parent $CURRENT_BRANCH $NEW_TARGET)
+  CMD="git rb --onto $NEW_TARGET $OLD_BRANCH $CURRENT_BRANCH"
+  echo $CMD
+  eval $CMD
+}
 alias gsync='git pull --rebase && git push'
 alias gpr='hub pull-request'
 # alias gles='/usr/local/bin/gl'
 
+function git-status-edit() {
+  $EDITOR $(git-get-changed)
+}
+function git-diff-edit() {
+  # optional, shows last commit if no argument is passed
+  BASE_COMMIT=${1:-HEAD^}
+  echo "BASE_COMMIT=$BASE_COMMIT"
+  $EDITOR $(git-get-changed $BASE_COMMIT)
+}
+
 alias ggc=git-get-changed # print list of any changed files in stage/unstage
-alias gse='$EDITOR $(git-get-changed)' # git status: edit all changed files
+alias gse=git-status-edit # git status: edit all changed files in stage/unstage
+alias gde=git-diff-edit # git diff: edit all changed files in last commit
 
 #alias go='git open'
 alias gup=gh-get-url-by-path
@@ -71,11 +100,11 @@ function gn() {
 }
 
 function gc__() {
-    msg="$@"; git commit -vam "$msg"
+    msg="$@"; git commit -vam "$msg" && take-webcam-picture > /dev/null
 }
 alias gc='noglob gc__'
 function gcn() {
-    msg="$@"; git commit -vnm "$msg"
+    msg="[$(ggb)] $@"; git commit -vnm "$msg" && take-webcam-picture > /dev/null
 }
 function gcm() {
     msg="$@"; git commit -vm "$msg"
@@ -110,8 +139,6 @@ alias copy=pbcopy
 #alias vim='mvim -v'
 alias svgo='svgo --enable=removeTitle --enable=removeUselessStrokeAndFill --enable=collapseGroups --enable=removeUselessDefs --enable=cleanupIDs'
 
-alias take-webcam-picture="imagesnap -w 1 '/Users/mxtnr/Library/Mobile Documents/com~apple~CloudDocs/Photos/webcam/$(date '+%d.%m.%y-%H.%M.jpg')'"
-alias camcap=take-webcam-picture
 function take() {
   mkdir $1; cd $1
 }

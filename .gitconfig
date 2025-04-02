@@ -1,10 +1,10 @@
 [user]
-	email = a.mekhonoshin@tinkoff.ru
-	name = Мехоношин Александр
+	email = invntrm@gmail.com
+	name = Alexander
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 	quotepath = false # Чтобы не упячилась кириллица в путях
-	editor = mvim -v
+	editor = "code --wait --new-window "
 	excludesfile = ~/.gitignore
 	ignorecase = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -35,7 +35,7 @@
 [diff]
 	noprefix = true # remove a/ b/ from diff
 	algorithm = patience
-  # tool = vsc-difftool
+  tool = vsc-difftool
 
 [branch]
 	autosetuprebase = always
@@ -162,3 +162,11 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff "lockb"]
+	textconv = bun
+	binary = true

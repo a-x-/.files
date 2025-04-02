@@ -21,6 +21,7 @@ export LANG=en_US.UTF-8
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export BUN_INSTALL="$HOME/.bun" 
 export PATH="$BUN_INSTALL/bin:$HOME/.files/bin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="$PATH:$HOME/.files/ts-import-trace/bin"
 
 #
 # HELPERS
