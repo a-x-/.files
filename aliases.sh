@@ -134,7 +134,6 @@ alias git-init="git init && echo '# MacOS #' > .gitignore && curl https://raw.gi
 # /git
 
 # misc
-alias /='rg'
 alias copy=pbcopy
 #alias vim='mvim -v'
 alias svgo='svgo --enable=removeTitle --enable=removeUselessStrokeAndFill --enable=collapseGroups --enable=removeUselessDefs --enable=cleanupIDs'

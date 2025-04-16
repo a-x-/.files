@@ -25,3 +25,5 @@ bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
 alias -g '|/'='| grep -i' # / foo |/ bar #= grep foo | grep bar
+
+alias /='rg'

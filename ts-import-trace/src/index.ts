@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env bun
 import { CompilerOptions } from 'typescript';
 import { ModuleResolutionKind, resolveModuleName } from 'typescript';
 
