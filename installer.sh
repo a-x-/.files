@@ -34,12 +34,20 @@ echo "\n\n install zplug..."
 # Install plugins if there are plugins that have not been installed
 zplug install
 
-# manually install: https://github.com/junegunn/vim-plug
-# 1. curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# 2. run vim and call `:PlugInstall`
+echo ❗❕❗❕❗❕❗❕❗
+echo ❗❕❗❕❗❕❗❕❗
+echo install manually: 
+echo https://github.com/junegunn/vim-plug
+echo ❗❕❗❕❗❕❗❕❗
+echo 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+echo
+echo 'run vim and call ":PlugInstall"'
+echo ❗❕❗❕❗❕❗❕❗
+echo ❗❕❗❕❗❕❗❕❗
+
 
 # Fonts
-brew tap homebrew/cask-fonts
+# brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 brew install --cask font-input
 
