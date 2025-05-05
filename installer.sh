@@ -43,6 +43,10 @@ brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 brew install --cask font-input
 
+# gh copilot
+gh auth login
+gh extension install github/gh-copilot
+
 #
 #
 echo "\n\n setup everything"
