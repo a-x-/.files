@@ -1,6 +1,7 @@
 [user]
-	email = invntrm@gmail.com
-	name = Alexander
+  name = Alexander Mekhonoshin
+  email = ultra@dubformer.ai
+	signingkey = A95385DFEF9D1FBD
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 	quotepath = false # Чтобы не упячилась кириллица в путях
@@ -156,6 +157,7 @@
 	submoduleSummary = true
 
 [commit]
+	gpgsign = true
 	#gpgsign = true
 [color "diff-highlight"]
 	oldNormal = red bold

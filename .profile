@@ -1,12 +1,19 @@
+
+for file in exports aliases; do source ~/.files/${file}.sh; done
+unset file
+
 #
 # Front
 #
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 export PATH="./node_modules/.bin/:$PATH"
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 #
 # General Purpose Exports
@@ -29,9 +36,6 @@ export PATH="$PATH:$HOME/.files/ts-import-trace/bin"
 
 #eval $(thefuck --alias)
 #eval "$(fasd --init auto)"
-
-for file in exports aliases; do source ~/.files/${file}.sh; done
-unset file
 
 # added by travis gem
 #[ -f /Users/mxtnr/.travis/travis.sh ] && source /Users/mxtnr/.travis/travis.sh
@@ -63,5 +67,6 @@ if [[ $RANDOM > 8191 ]]; then
   echo '                ||----w |'
   echo '                ||     ||'
 fi
-#eval "$($(brew --prefix)/bin/brew shellenv)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+

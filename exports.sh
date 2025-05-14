@@ -8,3 +8,5 @@
 
 #export PATH="$HOME/.cargo/bin:$PATH"
 #source /Users/mxtnr/emsdk-portable/emsdk_env.sh
+
+export HOMEBREW_PREFIX=$(brew --prefix)
